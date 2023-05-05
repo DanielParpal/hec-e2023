@@ -15,3 +15,4 @@ Préparation :
   - Effectuons un exemple avec l'alerte ("alert")
 - Lecture active sur la grille ("grid") Bootstrap 
   - Il s'agit de la portion difficile du cours 4, alors SVP prenez le temps de bien lire, tester et comprendre!
+  
