@@ -1,0 +1,13 @@
+p, li {
+	color: blue;
+}
+.paragraphe-en-bleu {
+	border: 2px solid blue;
+	background-color: lightgray;
+}
+.taille-police-grande, .paragraphe-en-bleu {
+	font-size: 1.2em;
+}
+#premier-paragraphe {
+	background-color: lightcyan;
+}
