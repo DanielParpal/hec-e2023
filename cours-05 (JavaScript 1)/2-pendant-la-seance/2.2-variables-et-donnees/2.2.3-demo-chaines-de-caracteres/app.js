@@ -20,3 +20,7 @@ console.log("Bonjour, " + prenom);
 var montant = 50;
 var devise = "yen";
 console.log("Le total est: " + montant + devise);
+
+var prix = 10;
+prix = prix + 10;
+console.log(prix); // 20
