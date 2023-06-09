@@ -1,12 +1,12 @@
 // 1. Modélisation des données
-var tailles = [5, 6, 7, 8, 9, 10];
+var tailles = [5, 6, 7, 8, 9, 10, 11];
 
 var botteA = {
 	marque: 'UGG',
-	nom: 'CLASSIC MINI PLATFORM Women',
+	nom: 'CLASSIC MINI PLATFORM Women TEST TEST TEST',
 	imageSrc: 'images/ugg-classic-mini-platform.jpeg',
 	imageAlt: 'Ugg classic mini platform',
-	taillesDispo: [5, 8]
+	taillesDispo: [5, 8, 10]
 };
 
 var botteB = {
@@ -14,7 +14,7 @@ var botteB = {
 	nom: 'NEUMEL PLATFORM Women',
 	imageSrc: 'images/ugg-neumel-platform.jpeg',
 	imageAlt: 'Ugg neumel platform',
-	taillesDispo: [5, 6, 8, 10]
+	taillesDispo: [5, 6, 8, 10, 11]
 };
 
 var botteC = {
@@ -39,6 +39,34 @@ botteA, botteB, botteC, botteD,
 
 // Votre code viendra ci-dessous
 
+// 2. Génération dynamique de l'état initial
+
+// les boutons de taille
+for (var i = 0; i < tailles.length; i = i + 1) {
+	console.log(tailles[i]); // 5, 6, 7, 8, 9,10
+	$("#boutonsFiltreTaille").append('<button type="button" data-taille="' + tailles[i] + '" class="btn btn-outline-dark btn-selection-taille mr-2">' + tailles[i] + '</button>');
+}
+
+// les divisions avec les bottes
+for (var i = 0; i < bottes.length; i = i + 1) {
+	var botteHTML = '<div class="col-3 produit-botte" id="botte-' + i + '">';
+	botteHTML = botteHTML + '<div class="card">';
+	botteHTML = botteHTML + '<img src="' + bottes[i]['imageSrc'] + '" class="card-img-top" alt="' + bottes[i]['imageAlt'] + '" />';
+	botteHTML = botteHTML + '<div class="card-body">';
+	botteHTML = botteHTML + '<h5 class="card-title">' + bottes[i]['marque'] + '</h5>';
+	botteHTML = botteHTML + '<p class="card-text">' + bottes[i]['nom'] + '</p>';
+	botteHTML = botteHTML + '<a href="#" class="btn btn-dark">Acheter</a>';
+	botteHTML = botteHTML + '</div></div></div>';
+
+	$("#produits").append(botteHTML);
+}
+
+// Définition de ma variable à l'extérieur du gestionnaire
+// Elle sera donc disponible dans un autre gestionnaire d'événement
+// Je l'initialise à -1, c'est-à-dire une valeur qu'elle ne pourra avoir suite à un click.
+var tailleSelectionnee = -1;
+
+// 3. Écriture des algorithmes dynamiques
 // Mise en place d'un gestionnaire d'événements pour les boutons de taille
 $(".btn-selection-taille").on('click', function() {
 
@@ -51,7 +79,7 @@ $(".btn-selection-taille").on('click', function() {
 	$(this).addClass("btn-dark");
 
 	// On récupère la valeur stockée dans l'attribut data-taille
-	var tailleSelectionnee = $(this).data("taille"); 
+	tailleSelectionnee = $(this).data("taille"); 
 
 	// Masquer toutes les bottes
 	$(".produit-botte").hide();
@@ -65,6 +93,17 @@ $(".btn-selection-taille").on('click', function() {
 		}
 	}
 });
+
+// Autre gestionnaire d'événement
+$("#btn-affichage-taille").on('click', function() {
+	if (tailleSelectionnee == -1) {
+		console.log("Veuillez sélectionner une taille");
+	} else {
+		console.log(tailleSelectionnee);	
+	}
+});
+
+
 
 
 
